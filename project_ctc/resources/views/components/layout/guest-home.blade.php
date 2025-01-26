@@ -20,7 +20,7 @@
         @livewireScripts
     </head>
     <body class="font-sans antialiased">
-        @include('layouts.navigation')
+        @include('layouts.navigation2')
         <main>
             {{ $slot }}    
         </main>

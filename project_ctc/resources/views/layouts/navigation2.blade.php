@@ -1,4 +1,4 @@
-<nav class="fixed bg-black bg-opacity-60 text-white top-0 left-0 right-0 z-50 px-20 py-4 transition-all ease-in-out duration-300">
+<nav x-data="{ scrolled: false }" x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 0 })" :class="{ 'bg-black bg-opacity-60 text-white': scrolled, 'bg-transparent text-black': !scrolled }" class="fixed top-0 left-0 right-0 z-50 px-20 py-4 transition-all ease-in-out duration-300">
     <div class="mx-auto flex items-center justify-between">
         <div class="flex items-center">
             <img src="{{ asset('assets/logo.png') }}" alt="Logo" class="h-8 w-auto">
