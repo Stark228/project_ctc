@@ -133,40 +133,43 @@
         <div class="col-span-1 md:col-span-3">
             <div class="col-span-1 md:col-span-3">
                 <div class="space-y-6">
-                    <a href="{{ route('blog') }}" >
-                        <div class="border mb-3 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition bg-white flex flex-col md:flex-row">
-                            <div class="md:w-1/3">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH9T5qhzowEceit3HiG0RR9K9qCaY59cfOtw&s" alt="Car" class="h-full w-full object-cover">
-                            </div>
-                            <div class="p-4 flex flex-col justify-between md:w-2/3">
-                                <div>
-                                    <h3 class="font-bold text-lg text-gray-800">brand model year</h3>
-                                    <p class="text-gray-900 font-bold text-xl mt-2">$50,00,000</p>
+                    @foreach ($cars as $car)
+                        <a href="{{ route('cardetail', ['id' => $car->id]) }}">
+                            <div class="border mb-3 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition bg-white flex flex-col md:flex-row">
+                                <div class="md:w-1/3">
+                                    
+                                    <img src="{{  asset($car->images->first()?->image_path)  }}" alt="Car" class="h-full w-full object-cover">
                                 </div>
-                                <!-- Tags -->
-                                <div class="flex flex-wrap gap-2 mt-3">
-                                    <span class="text-sm bg-gray-100 text-gray-800 px-2 py-1 rounded-full">Milege</span>
-                                    <span class="text-sm bg-gray-100 text-gray-800 px-2 py-1 rounded-full">Transmission</span>
-                                    <span class="text-sm bg-gray-100 text-gray-800 px-2 py-1 rounded-full">Type</span>
-                                    <span class="text-sm bg-gray-100 text-gray-800 px-2 py-1 rounded-full">Fuel type</span>
-                                </div>
-                                <!-- Location -->
-                                <p class="text-sm text-gray-500 mt-4">Company</p>
-                                <!-- Safety and Likes -->
-                                <div class="flex items-center justify-between mt-4">
-                                    <div class="flex ">
-                                        <span class="flex">
-                                            @for ($i = 0; $i < 5; $i++)
-                                                <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                                </svg>
-                                            @endfor
-                                        </span>
+                                <div class="p-4 flex flex-col justify-between md:w-2/3">
+                                    <div>
+                                        <h3 class="font-bold text-lg text-gray-800">{{ $car->model->brand->name }} {{ $car->model->name }} {{ $car->model->year }}</h3>
+                                        <p class="text-gray-900 font-bold text-xl mt-2">Nu. {{ $car->price }}</p>
+                                    </div>
+                                    <!-- Tags -->
+                                    <div class="flex flex-wrap gap-2 mt-3">
+                                        <span class="text-sm bg-gray-100 text-gray-800 px-2 py-1 rounded-full">{{ $car->mileage }} km</span>
+                                        <span class="text-sm bg-gray-100 text-gray-800 px-2 py-1 rounded-full">{{ $car->transmission_type->type }}</span>
+                                        <span class="text-sm bg-gray-100 text-gray-800 px-2 py-1 rounded-full">{{ $car->car_type->type }}</span>
+                                        <span class="text-sm bg-gray-100 text-gray-800 px-2 py-1 rounded-full">{{ $car->fuel_type->type }}</span>
+                                    </div>
+                                    <!-- Location -->
+                                    <p class="text-sm text-gray-500 mt-4">{{ $car->dealer->name }}</p>
+                                    <!-- Safety and Likes -->
+                                    <div class="flex items-center justify-between mt-4">
+                                        <div class="flex ">
+                                            <span class="flex">
+                                                @for ($i = 0; $i < $car->safety_rating; $i++)
+                                                    <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                                    </svg>
+                                                @endfor
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    @endforeach
                 </div>
             </div>
         </div>

@@ -3,11 +3,15 @@
 namespace App\Livewire\Guest;
 
 use Livewire\Component;
+use App\Models\Car;
 
 class Cars extends Component
 {
     public function render()
     {
-        return view('livewire.guest.cars');
+        $cars = Car::all();
+        return view('livewire.guest.cars',[
+            'cars' => $cars
+        ]);
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
 
 Route::get('/dealers', [PageController::class, 'dealers'])->name('dealers');
-Route::get('/dealers/{id}', [PageController::class, 'dealer_detail'])->name('dealer_detail');
+Route::get('/dealers/dealer_detail', [PageController::class, 'dealer_detail'])->name('dealer_detail');
 
 Route::get('/cars', [PageController::class, 'cars'])->name('cars');
 Route::get('/cars/{id}', [PageController::class, 'cardetail'])->name('cardetail');
@@ -21,10 +21,14 @@ Route::get('/about', [PageController::class, 'about'])->name('about');
 
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
-Route::get('/appointment', [PageController::class, 'appointment'])->name('appointment');
+Route::get('/appointment/{id}', [PageController::class, 'appointment'])->name('appointment');
 
 Route::get('/feedback', [PageController::class, 'feedback'])->name('feedback');
 
+
+
+
+# Create
 
 
 

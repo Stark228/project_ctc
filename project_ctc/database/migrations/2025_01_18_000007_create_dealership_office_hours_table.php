@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('dealership_id')->constrained('dealerships')->cascadeOnDelete();
             $table->enum('day_of_week', ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']);
-            $table->timestamp('opening_time');
-            $table->timestamp('closing_time');
+            $table->time('opening_time')->nullable();
+            $table->time('closing_time')->nullable();
             $table->boolean('is_off_day')->default(false);
             $table->timestamps();
         });

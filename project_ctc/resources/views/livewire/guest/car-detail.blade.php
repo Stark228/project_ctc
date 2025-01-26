@@ -1,9 +1,13 @@
 <div>
     <div class="max-w-7xl mx-auto px-4 py-8 mt-20">
-        <h2 class="text-2xl font-semibold mb-6">Brand Model Year</h2>
+        <h2 class="text-2xl font-semibold mb-6">{{$car->model->brand->name}} {{$car->model->name}} {{$car->model->year}}</h2>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div class="lg:col-span-2 space-y-6">
-                <div x-data="{ currentImage: 0, images: ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH9T5qhzowEceit3HiG0RR9K9qCaY59cfOtw&s', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1dzAY9vxSYgd7Zz6Aji9j2-LaG3-BF5iw5w&s', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI2RLOBO8DYvk8aAUNEs6DJzCJzlgHT7HfAg&s'] }">
+                <div x-data="{ currentImage: 0, images: [
+                @foreach($car->images as $image)
+                    '{{ asset($image->image_path) }}'{{ !$loop->last ? ',' : '' }}
+                @endforeach
+                ] }">
                     <div class="relative">
                         <img :src="images[currentImage]" alt="Tundra SR5" class="w-full h-[400px] object-cover rounded-lg">
                         <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
@@ -22,42 +26,38 @@
                     <div class="grid grid-cols-2 gap-y-4">
                         <div>
                             <p class="text-gray-600 text-sm">Brand</p>
-                            <p class="font-medium">Toyota</p>
+                            <p class="font-medium">{{$car->model->brand->name}}</p>
                         </div>
                         <div>
                             <p class="text-gray-600 text-sm">Model</p>
-                            <p class="font-medium">Toyota</p>
+                            <p class="font-medium">{{$car->model->name}}</p>
                         </div>
                         <div>
                             <p class="text-gray-600 text-sm">Fuel Type</p>
-                            <p class="font-medium">Diesel</p>
+                            <p class="font-medium">{{ $car->fuel_type->type }}</p>
                         </div>
                         <div>
                             <p class="text-gray-600 text-sm">Body Type</p>
-                            <p class="font-medium">Pickup</p>
+                            <p class="font-medium">{{ $car->car_type->type }}</p>
                         </div>
                         <div>
                             <p class="text-gray-600 text-sm">Transmission</p>
-                            <p class="font-medium">Manual</p>
+                            <p class="font-medium">{{ $car->transmission_type->type }}</p>
                         </div>
                        
                         <div>
-                            <p class="text-gray-600 text-sm">Color</p>
-                            <p class="font-medium">Black</p>
-                        </div>
-                        <div>
                             <p class="text-gray-600 text-sm">Mileage</p>
-                            <p class="font-medium">50 miles</p>
+                            <p class="font-medium">{{ $car->mileage }} km</p>
                         </div>
                         <div>
                             <p class="text-gray-600 text-sm">Seat Count</p>
-                            <p class="font-medium">4 seats</p>
+                            <p class="font-medium">{{ $car->car_seater->seats }}</p>
                         </div>
                     </div>
                     <div class="mt-4">
                         <p class="text-gray-600 text-sm">Safety Rating</p>
                         <div class="flex gap-1 mt-1">
-                            @for ($i = 0; $i < 5; $i++)
+                            @for ($i = 0; $i < $car->safety_rating; $i++)
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-yellow-400">
                                     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                                 </svg>
@@ -78,60 +78,41 @@
                     <div class="mt-6 space-y-4">
                         <div class="flex justify-between items-center">
                             <span class="text-gray-600 font-black">Price</span>
-                            <span class="font-semibold">Nu. 42,00,000</span>
+                            <span class="font-semibold">Nu. {{$car->price}}</span>
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-gray-600">Dealer Discount</span>
-                            <span class="font-semibold text-green-500">Nu. 10,00,000</span>
+                            <span class="font-semibold text-green-500">Nu. {{$car->discount}}</span>
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-gray-600">Tax</span>
-                            <span class="font-semibold">Nu. 2,00,000</span>
+                            <span class="font-semibold">Nu. {{$car->tax}}</span>
                         </div>
 
                     </div>
                 </div>
-                {{-- <div class="bg-white rounded-lg p-6 shadow">
-                    <h3 class="text-lg font-semibold mb-4">Dealer Info</h3>
-                    <div class="flex justify-between items-center">
-                        <span class="text-gray-600">Dealer</span>
-                        <span class="font-semibold">Nu. 2,00,000 (5%)</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-gray-600">Email</span>
-                        <span class="font-semibold">Email</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-gray-600">Contact Number</span>
-                        <span class="font-semibold">178625363</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-gray-600">Address</span>
-                        <span class="font-semibold">Babesa, Thimphu</span>
-                    </div>
-                </div> --}}
                 <div class="bg-white rounded-lg p-6 shadow">
                     <h3 class="text-lg font-semibold mb-4">Dealership Info</h3>
-                    <button class="w-full border bg-blue-600 text-white py-2 rounded font-medium hover:bg-blue-700">
+                    <a href="{{ route('appointment', ['id' => $car->dealer->id]) }}" class="w-full block text-center border bg-blue-600 text-white py-2 rounded font-medium hover:bg-blue-700">
                         Book your Appointment
-                    </button>
+                    </a>
     
                     <div class="mt-6 space-y-4">
                         <div class="flex justify-between items-center">
                             <span class="text-gray-600 font-black">Dealer</span>
-                            <span class="font-semibold">Mg</span>
+                            <span class="font-semibold">{{$car->dealer->name}}</span>
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-gray-600">Email</span>
-                            <span class="font-semibold text-green-500">Nu. 10,00,000</span>
+                            <span class="font-semibold text-green-500">{{$car->dealer->email}}</span>
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-gray-600">Contact Number</span>
-                            <span class="font-semibold">Nu. 2,00,000</span>
+                            <span class="font-semibold">{{$car->dealer->contact_number}}</span>
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-gray-600">Address</span>
-                            <span class="font-semibold">Babesa, Thimphu</span>
+                            <span class="font-semibold">{{$car->dealer->address}}</span>
                         </div>
 
                     </div>

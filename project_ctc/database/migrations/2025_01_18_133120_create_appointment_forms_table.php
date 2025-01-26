@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('dealership_id')->constrained('dealerships')->cascadeOnDelete();
             $table->string('appointment_track_id')->unique();
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('phone_number');
             $table->string('address');
             $table->timestamp('visit_date_time');

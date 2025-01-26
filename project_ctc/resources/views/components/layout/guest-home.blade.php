@@ -10,7 +10,7 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <link rel="icon" href="{{ asset('assets/small_logo.png') }}" />
         <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-
+        <link rel="stylesheet" href="{{ asset('assets/landing.css')}}" />
         <!-- Styles / Scripts -->
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
             @vite(['resources/css/app.css', 'resources/js/app.js'])

@@ -22,9 +22,9 @@ class PageController extends Controller
     {
         return view('pages.cars');
     }
-    public function cardetail()
+    public function cardetail($id)
     {
-        return view('pages.car_detail');
+        return view('pages.car_detail',['id' => $id]);
     }
     public function showroom()
     {
@@ -46,9 +46,9 @@ class PageController extends Controller
     {
         return view('pages.contact');
     }
-    public function appointment()
+    public function appointment($id)
     {
-        return view('pages.appointment');
+        return view('pages.appointment',['id' => $id]);
     }
     public function feedback()
     {
