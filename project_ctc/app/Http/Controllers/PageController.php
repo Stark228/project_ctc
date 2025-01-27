@@ -14,9 +14,9 @@ class PageController extends Controller
     {
         return view('pages.dealers');
     }
-    public function dealer_detail()
+    public function dealer_detail($id)
     {
-        return view('pages.dealer_detail');
+        return view('pages.dealer_detail', [ 'id'=>$id ] );
     }
     public function cars()
     {
@@ -26,9 +26,9 @@ class PageController extends Controller
     {
         return view('pages.car_detail',['id' => $id]);
     }
-    public function showroom()
+    public function showroom($id)
     {
-        return view('pages.car_show_room');
+        return view('pages.car_show_room',['id' => $id]);
     }
     public function compare()
     {
@@ -49,6 +49,10 @@ class PageController extends Controller
     public function appointment($id)
     {
         return view('pages.appointment',['id' => $id]);
+    }
+    public function appointment_track()
+    {
+        return view('pages.track_appointment');
     }
     public function feedback()
     {

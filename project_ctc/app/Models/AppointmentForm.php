@@ -13,6 +13,6 @@ class AppointmentForm extends Model
 
     public function dealership(): BelongsTo
     {
-        return $this->BelongTo(Dealership::class);
+        return $this->belongsTo(Dealership::class);
     }
 }

@@ -3,11 +3,16 @@
 namespace App\Livewire\Guest;
 
 use Livewire\Component;
+use App\Models\Dealership;
 
 class Dealers extends Component
 {
+    
     public function render()
     {
-        return view('livewire.guest.dealers');
+        $dealers = Dealership::all();
+        return view('livewire.guest.dealers',[
+            'dealerships' => $dealers
+        ]);
     }
 }

@@ -9,14 +9,14 @@
                 <li><a href="{{ route('welcome')}}" class="hover:text-orange-600 hover:underline hover:underline-offset-4 underline-orange-600">Home</a></li>
                 <li><a href="{{ route('cars')}}" class="hover:text-orange-600 hover:underline hover:underline-offset-4 underline-orange-600">Cars</a></li>
                 <li><a href="{{ route('compare') }}" class="hover:text-orange-600 hover:underline hover:underline-offset-4 underline-orange-600">Compare</a></li>
-                {{-- <li><a href="{{ route('cars')}}" class="hover:text-orange-600 hover:underline hover:underline-offset-4 underline-orange-600">Dealers</a></li> --}}
+                <li><a href="{{ route('dealers')}}" class="hover:text-orange-600 hover:underline hover:underline-offset-4 underline-orange-600">Dealers</a></li>
                 <li><a href="{{ route('about')}}" class="hover:text-orange-600 hover:underline hover:underline-offset-4 underline-orange-600">About</a></li>
                 <li><a href="{{ route('contact')}}" class="hover:text-orange-600 hover:underline hover:underline-offset-4 underline-orange-600">Contact</a></li>
             </ul>
         </div>
 
         <div class="flex space-x-2">
-            <a href="#" class="text-white bg-black px-4 py-2 border border-white-2 rounded-0 hover:bg-gray-900 hover:text-orange-600 hover:border-orange-600 transition-colors">Track Appointment</a>
+            <a href="{{ route('appointment_track')}}" class="text-white bg-black px-4 py-2 border border-white-2 rounded-0 hover:bg-gray-900 hover:text-orange-600 hover:border-orange-600 transition-colors">Track Appointment</a>
             {{-- <a href="#" class="text-white bg-black px-4 py-2 border border-white-2 rounded-0 hover:bg-gray-900 hover:text-orange-600 hover:border-orange-600 transition-colors">Sign In</a> --}}
         </div>
     </div>

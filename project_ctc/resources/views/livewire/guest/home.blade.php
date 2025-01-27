@@ -10,19 +10,23 @@
                     <h3 class="text-black text-3xl font-bold">Choose your car</h3>
                     <div class="mt-3">
                         <label for="brand" class="block mb-2 text-sm font-medium text-gray-900">Select Brand</label>
-                        <select id="brand" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full px-2 py-5">
-                            <option selected>Choose a Brand</option>
-                            <option value="US">United States</option>
+                        <select wire:model.live="brand1" id="brand" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full px-2 py-5">
+                            <option value="">Select a brand</option>
+                            @foreach($brands as $brand)
+                                <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="mt-3">
                         <label for="model" class="block mb-2 text-sm font-medium text-gray-900">Select Model</label>
-                        <select id="model" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full px-2 py-5">
-                            <option selected>Choose a Model</option>
-                            <option value="US">United States</option>
+                        <select wire:model="model1" id="model" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full px-2 py-5">
+                            <option value="">Select a model</option>
+                            @foreach($models1 as $model)
+                                <option value="{{ $model->id }}">{{ $model->name }}</option>
+                            @endforeach
                         </select>
                     </div>
-                    <button class="rounded-lg text-2xl mt-5 text-white bg-black px-4 py-4 border border-white-2 rounded-0 hover:bg-gray-900 hover:text-orange-600 hover:border-orange-600 transition-colors w-full">Search</button>
+                    <button wire:click="searchCars" class="rounded-lg text-2xl mt-5 text-white bg-black px-4 py-4 border border-white-2 rounded-0 hover:bg-gray-900 hover:text-orange-600 hover:border-orange-600 transition-colors w-full">Search</button>
                 </div>
             </div>
         </div>

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('logo_image')->unique()->nullable();
             $table->string('address');
-            $table->string('location_url');
+            $table->text('location_url');
             $table->string('contact_number')->unique();
             $table->timestamps();
         });
