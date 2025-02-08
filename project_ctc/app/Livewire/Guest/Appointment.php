@@ -38,7 +38,7 @@ class Appointment extends Component
         ]);
 
         session()->flash('message', 'Appointment created successfully.');
-        $this->reset(); 
+        $this->reset();
     }
     public function render()
     {

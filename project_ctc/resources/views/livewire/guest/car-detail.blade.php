@@ -72,7 +72,7 @@
                 <div class="bg-white rounded-lg p-6 shadow">
                     <h3 class="text-lg font-semibold mb-4">Car Price Info</h3>
                     <a href="{{route('showroom', ['id'=>$car->id])}}" class="w-full block text-center border bg-blue-600 text-white py-2 rounded font-medium hover:bg-blue-700">
-                        Virtual Room Room
+                        Virtual Showroom
                     </a>
     
                     <div class="mt-6 space-y-4">

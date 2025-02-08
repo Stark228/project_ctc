@@ -86,5 +86,18 @@
             <span class="font-semibold">{{$car->dealer->address}}</span>
         </div>
     </div>
+
+    <!-- Video Section -->
+    <div class="mt-12 min-h-screen flex flex-col justify-center items-center py-12">
+        <h2 class="text-4xl font-bold text-center mb-8">{{ $car->model->name }}</h2>
+        <div class="w-full max-w-6xl mx-auto px-6">
+            <div class="rounded-lg overflow-hidden shadow-lg bg-black">
+                <!-- Video Player -->
+                <video controls autoplay loop class="w-full h-auto" style="max-height: 80vh;">
+                    <source src="{{ asset('video/Supra.mp4') }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
     </div>
 </div>
